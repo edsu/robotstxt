@@ -289,7 +289,7 @@
         txt = txt;
       }
       lineA = txt.split("\n");
-      myGateKeeper = void 0;
+      myGateKeeper = new GateKeeper(this.user_agent);
       currUserAgentGroup = false;
       groupGroupsA = [];
       evaluate = function(line, nr) {
@@ -311,9 +311,6 @@
             });
             kvA[0] = kvA[0].toLowerCase();
             if (kvA[0] === 'user-agent') {
-              if (!myGateKeeper) {
-                myGateKeeper = new GateKeeper(_this.user_agent);
-              }
               if ((currUserAgentGroup != null ? (_ref = currUserAgentGroup.rules) != null ? _ref.length : void 0 : void 0) === 0) {
                 groupGroupsA.push(currUserAgentGroup.name);
               } else {

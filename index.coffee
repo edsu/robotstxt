@@ -205,7 +205,7 @@ class RobotsTxt extends EventEmitter
   parse: (txt=txt) =>
     #console.log ('PARSED')
     lineA = txt.split "\n"
-    myGateKeeper = undefined
+    myGateKeeper = new GateKeeper(@user_agent)
     currUserAgentGroup = false
     groupGroupsA = []
 
@@ -241,12 +241,6 @@ class RobotsTxt extends EventEmitter
           #lowercase all keys
           kvA[0]=kvA[0].toLowerCase()
           if kvA[0] == 'user-agent'
-            #if this is the first group section, create a new gatekeeper
-            if not myGateKeeper
-              #console.log('NEW GATEKEEPER')
-              delete myGateKeeper
-              myGateKeeper = new GateKeeper(@user_agent)
-              
 
             # look if there are group to groups
             if currUserAgentGroup?.rules?.length == 0
